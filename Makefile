@@ -1,6 +1,6 @@
 # Compilador e flags
 CC = gcc
-CFLAGS = -std=c11 -Wall -Wextra -g -I./src/libtslog
+CFLAGS = -std=c11 -Wall -Wextra -g -I./src
 LDFLAGS = -lpthread
 
 # Diretórios
@@ -8,33 +8,48 @@ SRC_DIR = src
 TEST_DIR = tests
 OBJ_DIR = obj
 
-# Fontes e Objetos
+# --- Fontes e Objetos ---
 LOG_SRC = $(SRC_DIR)/libtslog/tslog.c
 LOG_OBJ = $(OBJ_DIR)/tslog.o
 
-TEST_SRC = $(TEST_DIR)/test_logging.c
-TEST_OBJ = $(OBJ_DIR)/test_logging.o
+SERVER_SRC = $(SRC_DIR)/server/server.c
+SERVER_OBJ = $(OBJ_DIR)/server.o
 
-# Alvo principal
-TARGET = test_logging
+CLIENT_SRC = $(SRC_DIR)/client/client.c
+CLIENT_OBJ = $(OBJ_DIR)/client.o
 
-all: $(TARGET)
+# --- Alvos Executáveis ---
+SERVER_TARGET = server
+CLIENT_TARGET = client
+TEST_TARGET = test_logging
 
-# Regra para o executável de teste
-$(TARGET): $(TEST_OBJ) $(LOG_OBJ)
+all: $(SERVER_TARGET) $(CLIENT_TARGET)
+
+# --- Regras de Build ---
+$(SERVER_TARGET): $(SERVER_OBJ) $(LOG_OBJ)
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
-# Regras para compilar os arquivos objeto
+$(CLIENT_TARGET): $(CLIENT_OBJ)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
+$(TEST_TARGET): $(TEST_DIR)/test_logging.c $(LOG_OBJ)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
+# --- Regras para compilar os arquivos objeto ---
 $(OBJ_DIR)/%.o: $(SRC_DIR)/libtslog/%.c
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR)/%.o: $(TEST_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/server/%.c
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/client/%.c
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Regra para limpar os arquivos gerados
 clean:
-	rm -rf $(OBJ_DIR) $(TARGET)
+	rm -rf $(OBJ_DIR) $(SERVER_TARGET) $(CLIENT_TARGET) $(TEST_TARGET)
 
 .PHONY: all clean
