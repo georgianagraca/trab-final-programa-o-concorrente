@@ -1,6 +1,7 @@
 # Trabalho Final - Programação Concorrente (C)
 
-**Aluno:** Georgiana Maria Braga Graça
+**Aluno:** Georgiana Maria Braga Graça  
+**Matrícula:** 20230021653
 
 ## Tema A: Servidor de Chat Multiusuário (TCP)
 
@@ -19,6 +20,18 @@ Esta primeira entrega foca na criação de uma base sólida para o projeto, com 
 * **Arquitetura Produtor-Consumidor**: O logger utiliza uma thread dedicada para as operações de E/S (escrita no console), desacoplando as threads de trabalho da escrita de logs e melhorando a performance.
 * **Teste de Concorrência**: Um programa CLI (`test_logging`) foi desenvolvido para validar a segurança da biblioteca, simulando múltiplas threads que geram logs concorrentemente.
 * **Build System**: Um `Makefile` foi configurado para compilar todo o projeto de forma automatizada.
+
+---
+
+## Etapa 2: Protótipo CLI de Comunicação
+
+Nesta etapa, foi desenvolvido o protótipo funcional do sistema de chat. O servidor agora é capaz de aceitar múltiplas conexões de clientes concorrentemente, e os clientes podem enviar e receber mensagens em tempo real.
+
+### Novas Funcionalidades:
+* **Servidor Concorrente (`server`):** Aceita conexões TCP e cria uma nova thread para cada cliente.
+* **Cliente Multi-Threaded (`client`):** Utiliza uma thread para receber mensagens do servidor e a thread principal para enviar as mensagens do usuário.
+* **Broadcast de Mensagens:** O servidor retransmite as mensagens recebidas de um cliente para todos os outros clientes conectados.
+* **Script de Teste (`start_server.sh`):** Automatiza a compilação e a inicialização do ambiente de teste.
 
 ---
 
@@ -64,21 +77,41 @@ O fluxo de dados e a interação entre as threads podem ser visualizados no diag
 
 ---
 
-## Como Compilar e Executar
+### 1. Compilar o Projeto
+Para compilar o servidor e o cliente, execute:
+```bash
+make
+```
+Para limpar os arquivos de compilação anteriores, você pode usar `make clean`.
 
-O projeto utiliza `make` para a compilação.
+### 2. Executar o Chat (Servidor e Clientes)
 
-1.  **Limpar builds anteriores (opcional):**
+O método recomendado é usar o script `start_server.sh`.
+
+**Método Automatizado (Recomendado):**
+O script irá compilar o projeto, iniciar o servidor em background e exibir os comandos para você conectar os clientes.
+```bash
+# Dê permissão de execução (apenas na primeira vez)
+chmod +x start_server.sh
+
+# Execute o script
+./start_server.sh
+```
+Após executar o script, abra novos terminais e use os comandos de cliente que aparecerão na tela.
+
+**Método Manual:**
+1.  **Inicie o servidor** em um terminal (ex: na porta 8080):
     ```bash
-    make clean
+    ./server 8080
+    ```
+2.  **Inicie quantos clientes** desejar em **novos terminais**:
+    ```bash
+    ./client <SeuNome> 127.0.0.1 8080
     ```
 
-2.  **Compilar o projeto:**
-    ```bash
-    make
-    ```
+### 3. Executar o Teste de Logging (da Etapa 1)
+Se desejar executar o teste específico da biblioteca de logging, use o comando:
+```bash
+./test_logging
+```
 
-3.  **Executar o teste de logging:**
-    ```bash
-    ./test_loggings
-    ```
