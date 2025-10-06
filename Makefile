@@ -36,15 +36,15 @@ $(TEST_TARGET): $(TEST_DIR)/test_logging.c $(LOG_OBJ)
 	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
 
 # --- Regras para compilar os arquivos objeto ---
-$(OBJ_DIR)/%.o: $(SRC_DIR)/libtslog/%.c
+$(OBJ_DIR)/tslog.o: $(SRC_DIR)/libtslog/tslog.c
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/server/%.c
+$(OBJ_DIR)/server.o: $(SRC_DIR)/server/server.c
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/client/%.c
+$(OBJ_DIR)/client.o: $(SRC_DIR)/client/client.c
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 

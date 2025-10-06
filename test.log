@@ -1,0 +1,5 @@
+[2025-10-06 01:19:23.057] [136446151227072] [INFO] Filtro de moderação ativado. Carregadas 5 palavras de exemplo.
+[2025-10-06 01:19:23.058] [136446151227072] [INFO] Iniciando o servidor de chat... (Pressione Ctrl+C para encerrar)
+[2025-10-06 01:19:23.058] [136446151227072] [INFO] Servidor escutando na porta especificada.
+[2025-10-06 01:19:23.058] [136446151227072] [INFO] Aguardando conexões de clientes...
+[2025-10-06 01:19:25.067] [136446151227072] [INFO] Nova conexão de 127.0.0.1:53376 (socket 4)

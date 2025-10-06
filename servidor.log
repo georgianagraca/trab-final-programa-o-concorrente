@@ -1,0 +1,38 @@
+[2025-10-06 01:21:03.703] [139334231520960] [INFO] Filtro de moderação ativado. Carregadas 5 palavras de exemplo.
+[2025-10-06 01:21:03.704] [139334231520960] [INFO] Iniciando o servidor de chat... (Pressione Ctrl+C para encerrar)
+[2025-10-06 01:21:03.704] [139334231520960] [INFO] Servidor escutando na porta especificada.
+[2025-10-06 01:21:03.704] [139334231520960] [INFO] Aguardando conexões de clientes...
+[2025-10-06 01:21:20.886] [139334231520960] [INFO] Nova conexão de 127.0.0.1:48066 (socket 4)
+[2025-10-06 01:21:20.886] [139334231520960] [INFO] [SERVER]: Ana entrou no chat.
+
+[2025-10-06 01:21:39.517] [139334231520960] [INFO] Nova conexão de 127.0.0.1:41160 (socket 5)
+[2025-10-06 01:21:39.517] [139334231520960] [INFO] [SERVER]: Beto entrou no chat.
+
+[2025-10-06 01:21:44.890] [139334231520960] [INFO] Mensagem recebida de Ana: oii gente
+
+[2025-10-06 01:21:49.764] [139334231520960] [INFO] Mensagem recebida de Beto: oii, ana!!
+
+[2025-10-06 01:21:57.704] [139334231520960] [INFO] Mensagem recebida de Ana: será que a carol vai entrar??
+
+[2025-10-06 01:22:05.194] [139334231520960] [INFO] Nova conexão de 127.0.0.1:48362 (socket 6)
+[2025-10-06 01:22:05.195] [139334231520960] [INFO] [SERVER]: Carol entrou no chat.
+
+[2025-10-06 01:22:12.569] [139334231520960] [INFO] Mensagem recebida de Carol: oii
+
+[2025-10-06 01:22:28.014] [139334231520960] [INFO] Solicitação de mensagem privada: Ana -> Beto: Beto, você vai pra aula amanhã?
+[2025-10-06 01:22:28.016] [139334231520960] [INFO] Mensagem PRIVADA de Ana para Beto: Beto, você vai pra aula amanhã?
+[2025-10-06 01:22:49.742] [139334231520960] [INFO] Solicitação de mensagem privada: Beto -> Ana: Vou! Vou levando morango
+[2025-10-06 01:22:49.743] [139334231520960] [INFO] Mensagem PRIVADA de Beto para Ana: Vou! Vou levando *******
+[2025-10-06 01:23:30.718] [139334231520960] [INFO] Mensagem recebida de Carol: tchau!
+
+[2025-10-06 01:23:34.318] [139334231520960] [INFO] [SERVER]: Carol saiu do chat.
+
+[2025-10-06 01:23:52.688] [139334231520960] [INFO] Sinal SIGINT recebido. Iniciando desligamento...
+[2025-10-06 01:23:52.689] [139334231520960] [INFO] Servidor: notificando todos os clientes sobre o encerramento...
+[2025-10-06 01:23:52.690] [139334231520960] [INFO] [SERVER]: Ana saiu do chat.
+
+[2025-10-06 01:23:52.690] [139334231520960] [INFO] [SERVER]: Beto saiu do chat.
+
+[2025-10-06 01:23:52.690] [139334231520960] [ERROR] Falha ao enviar mensagem broadcast.
+
+Servidor finalizado com sucesso.

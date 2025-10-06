@@ -1,16 +1,14 @@
-# Trabalho Final - Programação Concorrente (C)
-
-**Aluno:** Georgiana Maria Braga Graça
-
+# Trabalho Final - Linguagem de Programação II
+**Aluna:** Georgiana Maria Braga Graça
 ## Tema A: Servidor de Chat Multiusuário (TCP)
 
 Este repositório contém a implementação do trabalho final da disciplina de Programação Concorrente, focado no desenvolvimento de um sistema cliente/servidor em C utilizando conceitos como threads, mutex, variáveis de condição e sockets.
 
 ---
 
-## Etapa 1: Biblioteca de Logging Thread-Safe e Arquitetura
+## 🎥 Vídeo de Demonstração
 
-Esta primeira entrega foca na criação de uma base sólida para o projeto, com a implementação de um dos requisitos transversais mais importantes: um sistema de logging que possa ser utilizado por múltiplas threads simultaneamente sem causar condições de corrida.
+[![Assistir Demonstração - Servidor de Chat Multiusuário](https://img.youtube.com/vi/_E0mlEIwe-o/0.jpg)](https://www.youtube.com/watch?v=_E0mlEIwe-o)
 
 ### Funcionalidades Implementadas
 
@@ -19,6 +17,16 @@ Esta primeira entrega foca na criação de uma base sólida para o projeto, com 
 * **Arquitetura Produtor-Consumidor**: O logger utiliza uma thread dedicada para as operações de E/S (escrita no console), desacoplando as threads de trabalho da escrita de logs e melhorando a performance.
 * **Teste de Concorrência**: Um programa CLI (`test_logging`) foi desenvolvido para validar a segurança da biblioteca, simulando múltiplas threads que geram logs concorrentemente.
 * **Build System**: Um `Makefile` foi configurado para compilar todo o projeto de forma automatizada.
+
+**O sistema de chat implementado possui as seguintes funcionalidades:**
+
+* **Chat em Tempo Real:** Múltiplos clientes podem se conectar e conversar publicamente.
+* **Notificações de Conexão:** Todos os usuários são notificados quando um novo participante entra ou sai do chat.
+* **Histórico de Mensagens:** Novos clientes recebem as últimas 15 mensagens da conversa ao se conectarem.
+* **Mensagens Privadas:** Os usuários podem enviar mensagens diretas para outros participantes usando o comando `/msg`.
+* **Moderação de Conteúdo:** Um filtro de palavras dinâmico, carregado a partir do arquivo `moderador.txt`, censura conteúdos predefinidos nas mensagens públicas.
+* **Servidor Concorrente:** O servidor utiliza uma thread por cliente e protege as estruturas de dados compartilhadas com mutexes.
+* **Logging de Eventos:** O servidor registra todas as ações importantes (conexões, mensagens, erros) usando uma biblioteca de log thread-safe.
 
 ---
 
@@ -78,7 +86,38 @@ O projeto utiliza `make` para a compilação.
     make
     ```
 
-3.  **Executar o teste de logging:**
+3.  **Executar o Chat:**
+O método recomendado é usar o script `start_server.sh`.
+
+**Método Automatizado (Recomendado):**
+O script irá compilar o projeto, iniciar o servidor em background e exibir os comandos para você conectar os clientes.
+```bash
+# Dê permissão de execução (apenas na primeira vez)
+chmod +x start_server.sh
+
+# Execute o script
+./start_server.sh
+```
+Após rodar o script, abra novos terminais e use os comandos de cliente que aparecerão na tela.
+
+**Método Manual:**
+1.  **Inicie o servidor** em um terminal (ex: na porta 8080):
     ```bash
-    ./test_loggings
+    ./server 8080
     ```
+2.  **Inicie quantos clientes** desejar em **novos terminais**:
+    ```bash
+    ./client <SeuNome> 127.0.0.1 8080
+    ```
+
+### 3. Comandos do Chat
+
+* **Mensagem Pública:** Simplesmente digite sua mensagem e pressione Enter.
+    ```
+    Olá a todos!
+    ```
+* **Mensagem Privada:** Use o formato `/msg <nickname> <mensagem>`.
+    ```
+    /msg Ana Reunião às 15h, não se atrase.
+    ```
+---

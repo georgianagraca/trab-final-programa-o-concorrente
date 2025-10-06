@@ -1,0 +1,9 @@
+# Este arquivo contém uma lista de palavras para moderação no chat.
+# ATENÇÃO: A lista abaixo usa nomes de frutas apenas como exemplo
+# para demonstrar a funcionalidade do filtro.
+
+morango
+banana
+abacaxi
+laranja
+uva
